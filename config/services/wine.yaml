@@ -1,0 +1,10 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+    Wine\:
+        resource: '../../src/Wine'
+        exclude: '../../src/Wine/Entity/'
+    Wine\Controller\:
+        resource: '../../src/Wine/Controller/'
+        tags: ['controller.service_arguments']

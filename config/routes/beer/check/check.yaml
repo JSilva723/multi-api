@@ -1,0 +1,4 @@
+beer-check:
+    path: /healt-check
+    controller: Beer\Controller\HealtCheckController
+    methods: GET

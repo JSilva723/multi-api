@@ -1,0 +1,11 @@
+gerent:
+    resource: "./routes/gerent/main.yaml"
+    prefix: /api/gerent
+
+beer:
+    resource: "./routes/beer/main.yaml"
+    prefix: /api/beer
+
+wine:
+    resource: "./routes/wine/main.yaml"
+    prefix: /api/wine

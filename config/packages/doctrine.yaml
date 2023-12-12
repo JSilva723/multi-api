@@ -1,0 +1,66 @@
+doctrine:
+    dbal:
+        default_connection: gerent_conn
+        connections:
+            gerent_conn:
+                url: '%env(resolve:DATABASE_URL_GERENT)%'
+            beer_conn:
+                url: '%env(resolve:DATABASE_URL_BEER)%'
+            wine_conn:
+                url: '%env(resolve:DATABASE_URL_WINE)%'
+    orm:
+        default_entity_manager: gerent_em
+        entity_managers:
+            gerent_em:
+                connection: gerent_conn
+                mappings:
+                    Gerent:
+                        is_bundle: false
+                        type: xml
+                        dir: '%kernel.project_dir%/src/Gerent/Mapping'
+                        prefix: 'Gerent\Entity'
+                        alias: Gerent
+            beer_em:
+                connection: beer_conn
+                mappings:
+                    Beer:
+                        is_bundle: false
+                        type: xml
+                        dir: '%kernel.project_dir%/src/Beer/Mapping'
+                        prefix: 'Beer\Entity'
+                        alias: Beer
+            wine_em:
+                connection: wine_conn
+                mappings:
+                    Wine:
+                        is_bundle: false
+                        type: xml
+                        dir: '%kernel.project_dir%/src/Wine/Mapping'
+                        prefix: 'Wine\Entity'
+                        alias: Wine
+
+when@test:
+    doctrine:
+        dbal:
+            # "TEST_TOKEN" is typically set by ParaTest
+            dbname_suffix: '_test%env(default::TEST_TOKEN)%'
+
+when@prod:
+    doctrine:
+        orm:
+            auto_generate_proxy_classes: false
+            proxy_dir: '%kernel.build_dir%/doctrine/orm/Proxies'
+            query_cache_driver:
+                type: pool
+                pool: doctrine.system_cache_pool
+            result_cache_driver:
+                type: pool
+                pool: doctrine.result_cache_pool
+
+    framework:
+        cache:
+            pools:
+                doctrine.result_cache_pool:
+                    adapter: cache.app
+                doctrine.system_cache_pool:
+                    adapter: cache.system

@@ -1,0 +1,2 @@
+check:
+    resource: "./check/check.yaml"

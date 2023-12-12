@@ -1,0 +1,4 @@
+imports:
+    - { resource: './services/gerent.yaml' }
+    - { resource: './services/beer.yaml' }
+    - { resource: './services/wine.yaml' }
