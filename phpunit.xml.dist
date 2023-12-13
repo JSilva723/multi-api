@@ -15,12 +15,6 @@
         <testsuite name="gerent">
             <directory>tests/Gerent</directory>
         </testsuite>
-        <testsuite name="beer">
-            <directory>tests/Beer</directory>
-        </testsuite>
-        <testsuite name="wine">
-            <directory>tests/Wine</directory>
-        </testsuite>
     </testsuites>
     <coverage />
     <extensions>

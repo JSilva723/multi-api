@@ -5,17 +5,15 @@ declare(strict_types=1);
 namespace Gerent\Repository;
 
 use App\Exception\DataBaseException;
-use Doctrine\Persistence\ManagerRegistry;
-use Doctrine\Persistence\ObjectManager;
+use App\Exception\NotFoundException;
+use Doctrine\ORM\EntityManagerInterface;
 use Gerent\Entity\User;
 
 class DoctrineUserRepository implements UserRepository
 {
-    private readonly ObjectManager $manager;
-
-    public function __construct(ManagerRegistry $managerRegistry)
-    {
-        $this->manager = $managerRegistry->getManager('gerent_em');
+    public function __construct(
+        private EntityManagerInterface $manager
+    ) {
     }
 
     public function save(User $user): void
@@ -26,5 +24,15 @@ class DoctrineUserRepository implements UserRepository
         } catch (\Exception $e) {
             throw DataBaseException::drop($e->getMessage());
         }
+    }
+
+    public function findById(string $id): ?User
+    {
+        $user = $this->manager->getRepository(User::class)->find($id);
+        if (null === $user) {
+            throw NotFoundException::drop(['User', $id]);
+        }
+
+        return $user;
     }
 }

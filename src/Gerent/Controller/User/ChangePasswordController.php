@@ -2,17 +2,23 @@
 
 declare(strict_types=1);
 
-namespace Beer\Controller;
+namespace Gerent\Controller\User;
 
+use Gerent\Service\ChangePasswordService;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
-class HealtCheckController
+class ChangePasswordController
 {
+    public function __construct(
+        private ChangePasswordService $changePasswordService
+    ) {
+    }
+    
     public function __invoke(Request $request): JsonResponse
     {
         return new JsonResponse(
-            ['status' => 'OK Beer'],
+            $this->changePasswordService->__invoke($request),
             JsonResponse::HTTP_OK
         );
     }

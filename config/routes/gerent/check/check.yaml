@@ -1,4 +1,0 @@
-gerent-check:
-    path: /healt-check
-    controller: Gerent\Controller\HealtCheckController
-    methods: GET

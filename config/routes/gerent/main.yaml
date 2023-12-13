@@ -1,2 +1,2 @@
-check:
-    resource: "./check/check.yaml"
+user:
+    resource: "./user.yaml"

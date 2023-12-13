@@ -1,4 +1,0 @@
-wine-check:
-    path: /healt-check
-    controller: Wine\Controller\HealtCheckController
-    methods: GET

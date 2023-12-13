@@ -28,6 +28,11 @@ class User
         return $this->name;
     }
 
+    public function setPassword(string $password): void
+    {
+        $this->password = $password;
+    }
+
     public function toArray(): array
     {
         return [

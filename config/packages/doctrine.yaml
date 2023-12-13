@@ -1,43 +1,23 @@
 doctrine:
     dbal:
-        default_connection: gerent_conn
-        connections:
-            gerent_conn:
-                url: '%env(resolve:DATABASE_URL_GERENT)%'
-            beer_conn:
-                url: '%env(resolve:DATABASE_URL_BEER)%'
-            wine_conn:
-                url: '%env(resolve:DATABASE_URL_WINE)%'
+        url: '%env(resolve:DATABASE_URL)%'
+        profiling_collect_backtrace: '%kernel.debug%'
+        use_savepoints: true
+
     orm:
-        default_entity_manager: gerent_em
-        entity_managers:
-            gerent_em:
-                connection: gerent_conn
-                mappings:
-                    Gerent:
-                        is_bundle: false
-                        type: xml
-                        dir: '%kernel.project_dir%/src/Gerent/Mapping'
-                        prefix: 'Gerent\Entity'
-                        alias: Gerent
-            beer_em:
-                connection: beer_conn
-                mappings:
-                    Beer:
-                        is_bundle: false
-                        type: xml
-                        dir: '%kernel.project_dir%/src/Beer/Mapping'
-                        prefix: 'Beer\Entity'
-                        alias: Beer
-            wine_em:
-                connection: wine_conn
-                mappings:
-                    Wine:
-                        is_bundle: false
-                        type: xml
-                        dir: '%kernel.project_dir%/src/Wine/Mapping'
-                        prefix: 'Wine\Entity'
-                        alias: Wine
+        auto_generate_proxy_classes: true
+        enable_lazy_ghost_objects: true
+        report_fields_where_declared: true
+        validate_xml_mapping: true
+        naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
+        auto_mapping: true
+        mappings:
+            Gerent:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/src/Gerent/Mapping'
+                prefix: 'Gerent\Entity'
+                alias: Gerent
 
 when@test:
     doctrine:
