@@ -28,6 +28,11 @@ class User
         return $this->name;
     }
 
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
     public function setPassword(string $password): void
     {
         $this->password = $password;

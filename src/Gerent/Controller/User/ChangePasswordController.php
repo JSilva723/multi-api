@@ -19,7 +19,7 @@ class ChangePasswordController
     {
         return new JsonResponse(
             $this->changePasswordService->__invoke($request),
-            JsonResponse::HTTP_OK
+            JsonResponse::HTTP_ACCEPTED
         );
     }
 }

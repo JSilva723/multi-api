@@ -28,9 +28,8 @@ class DoctrineUserRepository implements UserRepository
 
     public function findById(string $id): ?User
     {
-        $user = $this->manager->getRepository(User::class)->find($id);
-        if (null === $user) {
-            throw NotFoundException::drop(['User', $id]);
+        if (null === $user = $this->manager->getRepository(User::class)->find($id)) {
+            throw NotFoundException::drop(['ID', $id]);
         }
 
         return $user;

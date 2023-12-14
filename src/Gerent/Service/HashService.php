@@ -22,7 +22,7 @@ class HashService implements HashServiceInterface
     
     public function isValid(User $user, string $password): bool
     {
-        return true;
+        return $user->getPassword() === $password;
         //return $this->userPasswordEncoder->isPasswordValid($user, $password);
     }
 }

@@ -1,2 +1,10 @@
 imports:
     - { resource: './services/gerent.yaml' }
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+    App\Listener\JsonExceptionTransformerListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception, method: onKernelException, priority: 100 }
