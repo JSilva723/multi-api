@@ -8,6 +8,9 @@ use App\Exception\DataBaseException;
 use App\Exception\NotFoundException;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\User;
+use Doctrine\ORM\Query\ResultSetMapping;
+use Doctrine\ORM\Query;
+
 
 class UserRepository implements IUserRepository
 {
@@ -33,5 +36,19 @@ class UserRepository implements IUserRepository
         }
 
         return $user;
+    }
+
+    public function getAll(): array
+    {
+        // $query = $this->manager->createQuery('SELECT u.id, u.username FROM App\Entity\User u');
+        // $users = $query->getResult(Query::HYDRATE_ARRAY);
+        $rsm = new ResultSetMapping();
+        $rsm->addEntityResult(User::class, 'u');
+        $rsm->addFieldResult('u', 'id', 'id');
+        $rsm->addFieldResult('u', 'username', 'username');
+        $query = $this->manager->createNativeQuery('SELECT id, username FROM users', $rsm);
+        $users = $query->getResult(Query::HYDRATE_ARRAY);
+
+        return $users;
     }
 }

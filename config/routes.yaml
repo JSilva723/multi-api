@@ -10,3 +10,8 @@ beer-check-healt:
     path: /api/beer/check-healt
     controller: App\Controller\StatusController
     methods: GET
+
+get-user:
+    path: /api/user/list
+    controller: App\Controller\ListUserController
+    methods: GET
