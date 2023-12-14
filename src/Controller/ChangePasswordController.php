@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Gerent\Controller;
+namespace App\Controller;
 
-use Gerent\Service\ChangePasswordService;
+use App\Service\ChangePasswordService;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Gerent\Repository;
+namespace App\Repository;
 
 use App\Exception\DataBaseException;
 use App\Exception\NotFoundException;
 use Doctrine\ORM\EntityManagerInterface;
-use Gerent\Entity\User;
+use App\Entity\User;
 
 class UserRepository implements IUserRepository
 {

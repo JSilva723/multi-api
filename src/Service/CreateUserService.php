@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Gerent\Service;
+namespace App\Service;
 
-use Gerent\Entity\User;
-use Gerent\Repository\IUserRepository;
+use App\Entity\User;
+use App\Repository\IUserRepository;
 use Symfony\Component\Uid\Uuid;
 
 class CreateUserService

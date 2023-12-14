@@ -2,7 +2,8 @@
 
 declare(strict_types=1);
 
-namespace Gerent\Entity;
+namespace App\Entity;
+
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 

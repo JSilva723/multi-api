@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Gerent\Service;
+namespace App\Service;
 
 use App\Exception\BadRequestException;
-use Gerent\Repository\IUserRepository;
+use App\Repository\IUserRepository;
 use Symfony\Component\HttpFoundation\Request;
 
 class ChangePasswordService

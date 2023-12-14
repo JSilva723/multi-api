@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Gerent\Functional\Controller;
+namespace App\Tests\Functional\Controller;
 
 use App\Tests\WebTestCaseBase;
 use Symfony\Component\HttpFoundation\JsonResponse;

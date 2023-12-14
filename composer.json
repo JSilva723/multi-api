@@ -38,8 +38,7 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/",
-            "Gerent\\": "src/Gerent"
+            "App\\": "src/"
         }
     },
     "autoload-dev": {

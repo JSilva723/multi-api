@@ -1,6 +1,12 @@
 api_login_check:
     path: /api/login_check
 
-gerent:
-    resource: "./routes/gerent/main.yaml"
-    prefix: /api/gerent
+gerent-user-change-password:
+    path: /api/gerent/user/{id}/change-password
+    controller: App\Controller\ChangePasswordController
+    methods: POST
+
+beer-check-healt:
+    path: /api/beer/check-healt
+    controller: App\Controller\StatusController
+    methods: GET

@@ -4,7 +4,7 @@ security:
     providers:
         app_user_provider:
             entity:
-                class: Gerent\Entity\User
+                class: App\Entity\User
                 property: username
     firewalls:
         dev:
@@ -23,7 +23,8 @@ security:
             jwt: ~
     access_control:
         - { path: ^/api/login, roles: PUBLIC_ACCESS }
-        - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api/beer/check, roles: PUBLIC_ACCESS }
+        - { path: ^/api/gerent, roles: IS_AUTHENTICATED_FULLY }
 
 when@test:
     security:

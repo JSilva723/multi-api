@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Gerent\Repository;
+namespace App\Repository;
 
-use Gerent\Entity\User;
+use App\Entity\User;
 
 interface IUserRepository
 {

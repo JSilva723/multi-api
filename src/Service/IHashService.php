@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Gerent\Service;
+namespace App\Service;
 
-use Gerent\Entity\User;
+use App\Entity\User;
 
 interface IHashService
 {
