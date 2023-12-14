@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 class ChangePasswordControllerTest extends WebTestCaseBase
 {
     private const ENDPOINT = '/api/gerent/user/%s/change-password';
-    private const ID = '76159d92-0bf9-431f-acbb-5944d193226c';
+    private const ID = 'e7f56a85-1ac4-40c3-8c49-0077f44b0494';
     private const PAYLOAD = [
         'current' => 'admin_test_123',
         'new' => 'admin_test_456',

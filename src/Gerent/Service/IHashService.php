@@ -7,7 +7,7 @@ namespace Gerent\Service;
 // use Symfony\Component\Security\Core\User\UserInterface;
 use Gerent\Entity\User;
 
-interface HashServiceInterface
+interface IHashService
 {
     public function genHash(User $user, string $password): string;
 

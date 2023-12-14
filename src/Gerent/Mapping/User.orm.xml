@@ -4,6 +4,7 @@
         <id name="id" type="string" length="36" column-definition="CHAR(36) NOT NULL"/>
 
         <field name="name" length="20"/>
-        <field name="password" length="20"/>
+        <field name="password" length="255"/>
+        <field name="roles" type="json"/>
     </entity>
 </doctrine-mapping>

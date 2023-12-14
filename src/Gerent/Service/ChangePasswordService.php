@@ -5,15 +5,14 @@ declare(strict_types=1);
 namespace Gerent\Service;
 
 use App\Exception\BadRequestException;
-use Gerent\Repository\UserRepository;
+use Gerent\Repository\IUserRepository;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class ChangePasswordService
 {
     public function __construct(
-        private HashServiceInterface $hashService,
-        private UserRepository $userRepository
+        private IHashService $hashService,
+        private IUserRepository $userRepository
     ) {
     }
 

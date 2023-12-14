@@ -5,19 +5,21 @@ declare(strict_types=1);
 namespace Gerent\Service;
 
 use Gerent\Entity\User;
-use Gerent\Repository\UserRepository;
+use Gerent\Repository\IUserRepository;
 use Symfony\Component\Uid\Uuid;
 
 class CreateUserService
 {
     public function __construct(
-        private UserRepository $userRepository,
+        private IUserRepository $userRepository,
+        private IHashService $hashService,
     ) {
     }
 
     public function create(string $name, string $password): array
     {
-        $user = User::create(Uuid::v4()->toRfc4122(), $name, $password);
+        $user = User::create(Uuid::v4()->toRfc4122(), $name);
+        $user->setPassword($this->hashService->genHash($user, $password));
         $this->userRepository->save($user);
 
         return $user->toArray();
