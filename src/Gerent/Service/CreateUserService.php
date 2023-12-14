@@ -16,9 +16,9 @@ class CreateUserService
     ) {
     }
 
-    public function create(string $name, string $password): array
+    public function create(string $username, string $password): array
     {
-        $user = User::create(Uuid::v4()->toRfc4122(), $name);
+        $user = User::create(Uuid::v4()->toRfc4122(), $username);
         $user->setPassword($this->hashService->genHash($user, $password));
         $this->userRepository->save($user);
 

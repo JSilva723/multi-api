@@ -23,16 +23,16 @@ class CreateUserCommand extends Command
         $this
             ->setName('gerent:user:create')
             ->setDescription('Create new user in the gerent module')
-            ->addArgument('name', InputArgument::REQUIRED, 'User name')
+            ->addArgument('username', InputArgument::REQUIRED, 'User username')
             ->addArgument('password', InputArgument::REQUIRED, 'User password');
     }
 
     public function execute(InputInterface $input, OutputInterface $output): int
     {
-        $name = $input->getArgument('name');
+        $username = $input->getArgument('username');
         $password = $input->getArgument('password');
-        $this->createUserService->create($name, $password);
-        $output->writeln(sprintf('User [%s] has been created', $name));
+        $this->createUserService->create($username, $password);
+        $output->writeln(sprintf('User [%s] has been created', $username));
 
         return Command::SUCCESS;
     }

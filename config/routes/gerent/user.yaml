@@ -1,4 +1,4 @@
 gerent-user-change-password:
     path: /user/{id}/change-password
-    controller: Gerent\Controller\User\ChangePasswordController
+    controller: Gerent\Controller\ChangePasswordController
     methods: POST

@@ -10,15 +10,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     public function __construct(
         private readonly string $id,
-        private string $name,
+        private string $username,
         private string $password,
         private array $roles
     ) {
     }
 
-    public static function create(string $id, string $name): self
+    public static function create(string $id, string $username): self
     {
-        return new static($id, $name, '', []);
+        return new static($id, $username, '', []);
     }
 
     public function getId(): string
@@ -26,22 +26,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->id;
     }
 
-    public function getName(): string
+    public function getUserame(): string
     {
-        return $this->name;
+        return $this->username;
     }
 
     public function toArray(): array
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
+            'username' => $this->username,
         ];
     }
 
     public function getUserIdentifier(): string
     {
-        return (string) $this->name;
+        return (string) $this->username;
     }
 
     public function getRoles(): array
