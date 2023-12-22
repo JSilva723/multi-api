@@ -34,12 +34,13 @@ class WebTestCaseBase extends WebTestCase
         if (null === self::$authenticatedClient) {
             self::$authenticatedClient = clone self::$client;
 
-            $user = static::getContainer()->get(UserRepository::class)->findById('e7f56a85-1ac4-40c3-8c49-0077f44b0494');
+            $user = static::getContainer()->get(UserRepository::class)->findById('29577df1-deb0-4fa4-9ab3-2bab1a7e3a2d');
             $token = static::getContainer()->get(JWTTokenManagerInterface::class)->create($user);
 
             self::$authenticatedClient->setServerParameters([
                 'CONTENT_TYPE' => 'application/json',
                 'HTTP_ACCEPT' => 'application/json',
+                'HTTP_HOST' => 'testgerent.multiservice.vm',
                 'HTTP_Authorization' => \sprintf('Bearer %s', $token),
             ]);
         }

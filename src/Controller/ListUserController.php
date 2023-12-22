@@ -17,9 +17,8 @@ class ListUserController
     
     public function __invoke(Request $request): JsonResponse
     {
-        $data =  $this->listUserService->__invoke($request);
         return new JsonResponse(
-            $data,
+            $this->listUserService->__invoke($request),
             JsonResponse::HTTP_OK
         );
     }

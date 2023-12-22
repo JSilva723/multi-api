@@ -1,6 +1,11 @@
 doctrine:
     dbal:
-        url: '%env(resolve:DATABASE_URL)%'
+        dbname: '%env(resolve:DATABASE_NAME)%'
+        host: '%env(resolve:DATABASE_HOST)%'
+        port: '%env(resolve:DATABASE_PORT)%'
+        user: '%env(resolve:DATABASE_USER)%'
+        password: '%env(resolve:DATABASE_PASSWORD)%'
+        driver: pdo_mysql
         profiling_collect_backtrace: '%kernel.debug%'
         use_savepoints: true
 
@@ -22,8 +27,7 @@ doctrine:
 when@test:
     doctrine:
         dbal:
-            # "TEST_TOKEN" is typically set by ParaTest
-            dbname_suffix: '_test%env(default::TEST_TOKEN)%'
+            dbname_suffix: false
 
 when@prod:
     doctrine:
