@@ -1,16 +1,3 @@
-services:
-    _defaults:
-        autowire: true
-        autoconfigure: true
-    App\:
-        resource: '../src/'
-        exclude: '../src/Entity/'
-    App\Controller\:
-        resource: '../src/Controller/'
-        tags: ['controller.service_arguments']
-    App\Command\:
-        resource: '../src/Command/'
-        tags: [ 'console.command' ]
-    App\Listener\JsonExceptionTransformerListener:
-        tags:
-            - { name: kernel.event_listener, event: kernel.exception, method: onKernelException, priority: 100 }
+imports:
+    - { resource: './services/gerent.yaml' }
+    - { resource: './services/shared.yaml' }

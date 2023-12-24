@@ -3,10 +3,10 @@ api_login_check:
 
 gerent-user-change-password:
     path: /api/user/{id}/change-password
-    controller: App\Controller\ChangePasswordController
+    controller: Gerent\Controller\ChangePasswordController
     methods: POST
 
 get-user:
     path: /api/user/list
-    controller: App\Controller\ListUserController
+    controller: Gerent\Controller\ListUserController
     methods: GET

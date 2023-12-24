@@ -48,7 +48,7 @@ class ChangePasswordControllerTest extends WebTestCaseBase
     public function testChangePasswordBadPayload(): void
     {
         $badPayload = self::PAYLOAD;
-        $badPayload['current'] = 'bad-current-password'; 
+        $badPayload['current'] = 'bad-current-password';
         self::$authenticatedClient->request(
             Request::METHOD_POST,
             sprintf(self::ENDPOINT, self::ID),

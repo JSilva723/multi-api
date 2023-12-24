@@ -1,0 +1,16 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    Gerent\:
+        resource: '../../src/Gerent/'
+        exclude: '../../src/Gerent/Entity/'
+
+    Gerent\Controller\:
+        resource: '../../src/Gerent/Controller/'
+        tags: ['controller.service_arguments']
+
+    Gerent\Command\:
+        resource: '../../src/Gerent/Command/'
+        tags: [ 'console.command' ]

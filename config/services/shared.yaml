@@ -1,0 +1,8 @@
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+    Shared\Listener\JsonExceptionTransformerListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception, method: onKernelException, priority: 100 }
