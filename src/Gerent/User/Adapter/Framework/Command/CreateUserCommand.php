@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Gerent\Command;
+namespace Gerent\User\Adapter\Framework\Command;
 
-use Gerent\Service\CreateUserService;
+use Gerent\User\Application\CreateUserService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;

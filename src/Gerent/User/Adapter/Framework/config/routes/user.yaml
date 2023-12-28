@@ -1,0 +1,9 @@
+user-change-password:
+    path: /{id}/change-password
+    controller: Gerent\User\Adapter\Framework\Controller\ChangePasswordController
+    methods: POST
+
+get-user:
+    path: /list
+    controller: Gerent\User\Adapter\Framework\Controller\ListUserController
+    methods: GET

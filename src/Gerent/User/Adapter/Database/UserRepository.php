@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Gerent\Repository;
+namespace Gerent\User\Adapter\Database;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\Query\ResultSetMapping;
-use Gerent\Entity\User;
+use Gerent\User\Domain\Model\User;
+use Gerent\User\Domain\Repository\IUserRepository;
 use Shared\Exception\DataBaseException;
 use Shared\Exception\NotFoundException;
 

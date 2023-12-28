@@ -4,7 +4,7 @@ security:
     providers:
         gerent_user_provider:
             entity:
-                class: Gerent\Entity\User
+                class: Gerent\User\Domain\Model\User
                 property: username
     firewalls:
         dev:

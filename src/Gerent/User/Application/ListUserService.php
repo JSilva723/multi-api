@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Gerent\Service;
+namespace Gerent\User\Application;
 
-use Gerent\Repository\IUserRepository;
-use Symfony\Component\HttpFoundation\Request;
+use Gerent\User\Domain\Repository\IUserRepository;
 
 class ListUserService
 {
@@ -14,7 +13,7 @@ class ListUserService
     ) {
     }
 
-    public function __invoke(Request $request): array
+    public function __invoke(): array
     {
         $users = $this->userRepository->getAll();
 

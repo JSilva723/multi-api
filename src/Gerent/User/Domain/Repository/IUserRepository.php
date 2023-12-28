@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Gerent\Repository;
+namespace Gerent\User\Domain\Repository;
 
-use Gerent\Entity\User;
+use Gerent\User\Domain\Model\User;
 
 interface IUserRepository
 {

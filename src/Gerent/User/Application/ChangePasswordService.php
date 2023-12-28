@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Gerent\Service;
+namespace Gerent\User\Application;
 
-use Gerent\Repository\IUserRepository;
+use Gerent\User\Domain\Repository\IUserRepository;
+use Gerent\User\Domain\Service\IHashService;
 use Shared\Exception\BadRequestException;
-use Symfony\Component\HttpFoundation\Request;
 
 class ChangePasswordService
 {
@@ -16,10 +16,8 @@ class ChangePasswordService
     ) {
     }
 
-    public function __invoke(Request $request): array
+    public function __invoke(string $id, array $data): array
     {
-        $id = $request->attributes->get('id');
-        $data = \json_decode($request->getContent(), true);
         $user = $this->userRepository->findById($id);
         if (!$this->hashService->isValid($user, $data['current'])) {
             throw BadRequestException::drop('Invalid current password!');

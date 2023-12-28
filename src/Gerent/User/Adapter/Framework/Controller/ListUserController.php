@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Gerent\Controller;
+namespace Gerent\User\Adapter\Framework\Controller;
 
-use Gerent\Service\ListUserService;
+use Gerent\User\Application\ListUserService;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 

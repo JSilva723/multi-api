@@ -1,0 +1,16 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    Gerent\User\:
+        resource: '../../../../../User'
+        exclude: '../../../../../User/Domain/Model/'
+
+    Gerent\User\Adapter\Framework\Controller\:
+        resource: '../../../../../User/Adapter/Framework/Controller/'
+        tags: ['controller.service_arguments']
+
+    Gerent\User\Adapter\Framework\Command\:
+        resource: '../../../../../User/Adapter/Framework/Command/'
+        tags: [ 'console.command' ]
