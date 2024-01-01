@@ -20,7 +20,7 @@ build: ## Build the containers
 	U_ID=${UID} docker-compose build
 
 restart: ## Restart the containers
-	$(MAKE) stop && $(MAKE) start
+	$(MAKE) down && $(MAKE) up
 
 ssh: ## bash into the app container
 	U_ID=${UID} docker exec -it --user ${UID} ${DOCKER_API} bash
