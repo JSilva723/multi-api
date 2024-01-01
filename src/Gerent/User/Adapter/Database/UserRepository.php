@@ -4,19 +4,25 @@ declare(strict_types=1);
 
 namespace Gerent\User\Adapter\Database;
 
-use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Persistence\ObjectManager;
+use Doctrine\Persistence\ManagerRegistry;
+use Gerent\User\Domain\Model\User;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\Query\ResultSetMapping;
-use Gerent\User\Domain\Model\User;
 use Gerent\User\Domain\Repository\IUserRepository;
 use Shared\Exception\DataBaseException;
 use Shared\Exception\NotFoundException;
 
 class UserRepository implements IUserRepository
 {
-    public function __construct(
-        private EntityManagerInterface $manager
-    ) {
+    private readonly ServiceEntityRepository $repository;
+    private readonly ObjectManager $manager;
+
+    public function __construct(ManagerRegistry $managerRegistry)
+    {
+        $this->repository = new ServiceEntityRepository($managerRegistry, User::class);
+        $this->manager = $managerRegistry->getManager('gerent_em');
     }
 
     public function save(User $user): void
@@ -46,7 +52,7 @@ class UserRepository implements IUserRepository
         $rsm->addEntityResult(User::class, 'u');
         $rsm->addFieldResult('u', 'id', 'id');
         $rsm->addFieldResult('u', 'username', 'username');
-        $query = $this->manager->createNativeQuery('SELECT id, username FROM users', $rsm);
+        $query = $this->repository->createNativeQuery('SELECT id, username FROM users', $rsm);
         $users = $query->getResult(Query::HYDRATE_ARRAY);
 
         return $users;
