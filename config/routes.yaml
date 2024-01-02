@@ -1,6 +1,10 @@
 api_login_check:
     path: /api/login_check
 
-user:
-    resource: '../src/Gerent/User/Adapter/Framework/config/routes/user.yaml'
-    prefix: /api/user
+gerent:
+    resource: './routes/gerent/main.yaml'
+    prefix: /api
+
+tenant:
+    resource: './routes/tenant/main.yaml'
+    prefix: /api

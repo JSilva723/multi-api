@@ -1,0 +1,9 @@
+tenant-user-change-password:
+    path: /{id}/change-password
+    controller: Tenant\User\Adapter\Framework\Controller\ChangePasswordController
+    methods: POST
+
+tenant-get-user:
+    path: /list
+    controller: Tenant\User\Adapter\Framework\Controller\ListUserController
+    methods: GET
