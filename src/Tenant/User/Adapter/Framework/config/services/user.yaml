@@ -1,0 +1,12 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    Tenant\User\:
+        resource: '../../../../../User'
+        exclude: '../../../../../User/Domain/Model/'
+
+    Tenant\User\Adapter\Framework\Controller\:
+        resource: '../../../../../User/Adapter/Framework/Controller/'
+        tags: ['controller.service_arguments']

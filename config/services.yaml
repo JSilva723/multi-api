@@ -1,3 +1,4 @@
 imports:
     - { resource: '../src/Gerent/User/Adapter/Framework/config/services/user.yaml' }
+    - { resource: '../src/Tenant/User/Adapter/Framework/config/services/user.yaml' }
     - { resource: './services/shared.yaml' }

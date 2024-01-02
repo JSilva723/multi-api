@@ -40,7 +40,8 @@
         "psr-4": {
             "App\\": "src/",
             "Shared\\": "src/Shared",
-            "Gerent\\": "src/Gerent"
+            "Gerent\\": "src/Gerent",
+            "Tenant\\": "src/Tenant"
         }
     },
     "autoload-dev": {

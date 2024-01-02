@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Gerent\User\Adapter\Database;
+namespace Tenant\User\Adapter\Database;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\Query\ResultSetMapping;
-use Gerent\User\Domain\Model\User;
-use Gerent\User\Domain\Repository\IUserRepository;
+use Tenant\User\Domain\Model\User;
+use Tenant\User\Domain\Repository\IUserRepository;
 use Shared\Exception\DataBaseException;
 use Shared\Exception\NotFoundException;
 
@@ -22,7 +22,7 @@ class UserRepository implements IUserRepository
     public function __construct(ManagerRegistry $managerRegistry)
     {
         $this->repository = new ServiceEntityRepository($managerRegistry, User::class);
-        $this->manager = $managerRegistry->getManager('gerent_em');
+        $this->manager = $managerRegistry->getManager('tenant_em');
     }
 
     public function save(User $user): void

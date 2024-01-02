@@ -3,6 +3,14 @@ doctrine:
         default_connection: default
         connections:
             default:
+                dbname: '%env(resolve:TENANT_DATABASE_NAME)%'
+                host: '%env(resolve:TENANT_DATABASE_HOST)%'
+                port: '%env(resolve:TENANT_DATABASE_PORT)%'
+                user: '%env(resolve:TENANT_DATABASE_USER)%'
+                password: '%env(resolve:TENANT_DATABASE_PASSWORD)%'
+                driver: pdo_mysql
+                use_savepoints: true
+            gerent:
                 dbname: '%env(resolve:DATABASE_NAME)%'
                 host: '%env(resolve:DATABASE_HOST)%'
                 port: '%env(resolve:DATABASE_PORT)%'
@@ -12,15 +20,24 @@ doctrine:
                 use_savepoints: true
     orm:
         enable_lazy_ghost_objects: true
-        default_entity_manager: gerent_em
+        default_entity_manager: tenant_em
         entity_managers:
-            gerent_em:
+            tenant_em:
                 connection: default
                 mappings:
                     User:
                         is_bundle: false
                         type: xml
-                        dir: '%kernel.project_dir%/config/Mapping/'
+                        dir: '%kernel.project_dir%/config/Mapping/tenant'
+                        prefix: 'Tenant\User\Domain\Model'
+                        alias: Tenant\User\Domain\Model
+            gerent_em:
+                connection: gerent
+                mappings:
+                    User:
+                        is_bundle: false
+                        type: xml
+                        dir: '%kernel.project_dir%/config/Mapping/gerent'
                         prefix: 'Gerent\User\Domain\Model'
                         alias: Gerent\User\Domain\Model
 

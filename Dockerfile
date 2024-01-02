@@ -32,11 +32,13 @@ RUN mkdir -p /var/www/html
 COPY ./xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 
 # Update Apache config
-COPY ./default.conf /etc/apache2/sites-available/default.conf
+COPY ./001-default.conf /etc/apache2/sites-available/001-default.conf
+COPY ./002-default.conf /etc/apache2/sites-available/002-default.conf
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf \
     && a2enmod rewrite \
     && a2dissite 000-default \
-    && a2ensite default \
+    && a2ensite 001-default \
+    && a2ensite 002-default \
     && service apache2 restart
 
 # Modify upload file size
