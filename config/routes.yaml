@@ -3,7 +3,7 @@ api_login_check:
 
 gerent:
     resource: './routes/gerent/main.yaml'
-    prefix: /api
+    prefix: /api/gerent
 
 tenant:
     resource: './routes/tenant/main.yaml'

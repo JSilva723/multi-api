@@ -4,57 +4,36 @@ declare(strict_types=1);
 
 namespace Gerent\User\Adapter\Database;
 
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\Persistence\ObjectManager;
-use Doctrine\Persistence\ManagerRegistry;
-use Doctrine\ORM\Query;
-use Doctrine\ORM\Query\ResultSetMapping;
 use Gerent\User\Domain\Model\User;
 use Gerent\User\Domain\Repository\IUserRepository;
-use Shared\Exception\DataBaseException;
-use Shared\Exception\NotFoundException;
+use Shared\Doctrine\DoctrineBaseRepository;
 
-class UserRepository implements IUserRepository
+class UserRepository extends DoctrineBaseRepository implements IUserRepository
 {
-    private readonly ServiceEntityRepository $repository;
-    private readonly ObjectManager $manager;
-
-    public function __construct(ManagerRegistry $managerRegistry)
+    protected static function entityClass(): string
     {
-        $this->repository = new ServiceEntityRepository($managerRegistry, User::class);
-        $this->manager = $managerRegistry->getManager('gerent_em');
+        return User::class;
     }
 
-    public function save(User $user): void
+    public function findById(string $id): array
     {
-        try {
-            $this->manager->persist($user);
-            $this->manager->flush();
-        } catch (\Exception $e) {
-            throw DataBaseException::drop($e->getMessage());
-        }
-    }
+        $params = [
+            ':id' => $this->getEntityManager()->getConnection()->quote($id),
+        ];
+        $query = 'SELECT * FROM user WHERE id = :id';
 
-    public function findById(string $id): ?User
-    {
-        if (null === $user = $this->manager->getRepository(User::class)->find($id)) {
-            throw NotFoundException::drop(['ID', $id]);
-        }
-
-        return $user;
+        return $this->getEntityManager()->getConnection()->executeQuery(\strtr($query, $params))->fetchAllAssociative();
     }
 
     public function getAll(): array
     {
-        // $query = $this->manager->createQuery('SELECT u.id, u.username FROM App\Entity\User u');
-        // $users = $query->getResult(Query::HYDRATE_ARRAY);
-        $rsm = new ResultSetMapping();
-        $rsm->addEntityResult(User::class, 'u');
-        $rsm->addFieldResult('u', 'id', 'id');
-        $rsm->addFieldResult('u', 'username', 'username');
-        $query = $this->repository->createNativeQuery('SELECT id, username FROM users', $rsm);
-        $users = $query->getResult(Query::HYDRATE_ARRAY);
+        $query = 'SELECT id, username FROM users';
 
-        return $users;
+        return $this->getEntityManager()->getConnection()->executeQuery($query)->fetchAllAssociative();
+    }
+
+    public function save(User $user): void
+    {
+        $this->saveEntity($user);
     }
 }
