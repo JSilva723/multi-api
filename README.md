@@ -16,14 +16,17 @@ Then in the cloud server we have install apache and config apache-proxy, create 
 
 ## Start 
 **Add URL in hosts list**
+
 In this stage, for to work, we need add multitenant.vm and tenant1.multitenant.vm in hosts list.
 ```sh
 127.0.1.1       multitenant.vm
 127.0.1.1       tenant1.multitenant.vm
 ```
 In next stage we will create nginx-proxy-reverse or apache-proxy, for managers the images.
+
 **Create databases and tables**
-In this stage, the databases management is maunualy.
+
+In this stage, the databases management is manually.
 
 Open a console and run
 ```sh
