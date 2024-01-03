@@ -13,8 +13,8 @@ class ChangePasswordControllerTest extends WebTestCaseBase
     private const ENDPOINT = '/api/user/%s/change-password';
     private const ID = '29577df1-deb0-4fa4-9ab3-2bab1a7e3a2d';
     private const PAYLOAD = [
-        'current' => 'admin_test_123',
-        'new' => 'admin_test_456',
+        'current' => 'tenant_user_pass',
+        'new' => 'tenant_user_pass_new',
     ];
 
     public function testChangePasswordSucces(): void

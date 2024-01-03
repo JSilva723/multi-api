@@ -1,4 +1,4 @@
-## API for multiservice
+## API for multitenant
 ![design](/design.png "Basic design of architecture")
 
 ## Start
@@ -12,6 +12,12 @@ make down
 ## Help
 ```sh
 make help
+```
+
+## Update DB
+```sh
+make ssh # Move into container
+make sf doctrine:schema:update --em=tenant_em --dump-sql
 ```
 
 ## Test

@@ -1,8 +1,8 @@
 #!/bin/bash
 
 UID = $(shell id -u)
-DOCKER_API = multiservice-api
-DOCKER_DB = multiservice-db
+DOCKER_API = multitenant
+DOCKER_DB = multitenant-db
 
 help: ## Show this help message
 	@echo 'usage: make [target]'

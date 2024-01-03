@@ -40,7 +40,7 @@ class WebTestCaseBase extends WebTestCase
             self::$authenticatedClient->setServerParameters([
                 'CONTENT_TYPE' => 'application/json',
                 'HTTP_ACCEPT' => 'application/json',
-                'HTTP_HOST' => 'testgerent.multiservice.vm',
+                'HTTP_HOST' => 'tenant.multitenant.vm',
                 'HTTP_Authorization' => \sprintf('Bearer %s', $token),
             ]);
         }

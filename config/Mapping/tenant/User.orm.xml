@@ -5,6 +5,7 @@
 
         <field name="username" length="20"/>
         <field name="password" length="255"/>
+        <field name="email" length="50"/>
         <field name="roles" type="json"/>
     </entity>
 </doctrine-mapping>

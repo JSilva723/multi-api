@@ -1,7 +1,7 @@
 version: '3.5'
 services:  
-    multiservice-api:
-        container_name: multiservice-api
+    multitenant:
+        container_name: multitenant
         build:
             context: .
             args:
@@ -10,19 +10,17 @@ services:
             - "${PORT}:80"
         volumes:
             - .:/var/www/html
-            - ./001-default.conf:/etc/apache2/sites-available/001-default.conf
-            - ./002-default.conf:/etc/apache2/sites-available/002-default.conf
         environment:
             XDEBUG_CLIENT_HOST: 172.17.0.1
             XDEBUG_CLIENT_PORT: 9003
-    multiservice-db:
+    multitenant-db:
         image: mysql:8.0
         command: --default-authentication-plugin=mysql_native_password
-        container_name: multiservice-db
+        container_name: multitenant-db
         environment:
             MYSQL_ROOT_HOST: '%'
             MYSQL_ROOT_PASSWORD: root
         volumes:
-            - multiservice-data:/var/lib/mysql
+            - multitenant-data:/var/lib/mysql
 volumes:
-    multiservice-data:
+    multitenant-data:

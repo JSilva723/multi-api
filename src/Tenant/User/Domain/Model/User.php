@@ -13,13 +13,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         private readonly string $id,
         private string $username,
         private string $password,
+        private string $email,
         private array $roles
     ) {
     }
 
-    public static function create(string $id, string $username): self
+    public static function create(string $id, string $username, string $email): self
     {
-        return new static($id, $username, '', []);
+        return new static($id, $username, '', $email, []);
     }
 
     public function getId(): string
@@ -32,11 +33,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->username;
     }
 
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
     public function toArray(): array
     {
         return [
             'id' => $this->id,
             'username' => $this->username,
+            'email' => $this->email,
         ];
     }
 
